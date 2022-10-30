@@ -2,6 +2,7 @@
 
 import loader
 import sys
+from random import randint
 
 """
 Title: Battle at Traitor's Castle
@@ -27,7 +28,32 @@ instructions = "{}up. if you are still on the planet after ten tries, the aliens
 instructions = "{}will capture you\n\n".format(instructions)
 
 def main_game():
-	print("Hello")
+
+	gravity = randint(0,20)
+	weight = randint(0,40)
+	esc_vel = gravity * weight
+	escaped = False
+
+	for x in range (10):
+		force = input("Type in force: ")
+
+		if force>esc_vel:
+			print("Too High")
+		elif force<esc_vel:
+			print("Too Low")
+		else:
+			x = 10
+			escaped = True
+
+		if x<10:
+			print("Try again")
+
+	if escaped:
+		print("Congratulations, you managed to escape the planet")
+	else:
+		print("Unfortunately you were too slow. The Aliens got you")
+
+
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
