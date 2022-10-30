@@ -69,3 +69,7 @@ games.
 ##Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
+
+**30 October 2022**
+reconfigured the loader program to hold the start game function, and to call that start game function if the game
+is launched outside of the loader
