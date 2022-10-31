@@ -66,6 +66,10 @@ games.
 
 ## Games
 
+**Starship Takeoff**
+This is a simply guessing game. The player needs to guess a correct number to win. If the number is too high or
+Too low, then a message advising the player is given. The player gets 10 guesses to succeed.
+
 ##Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -73,3 +77,6 @@ Created the initial folder to hold the contents on the game
 **30 October 2022**
 reconfigured the loader program to hold the start game function, and to call that start game function if the game
 is launched outside of the loader
+
+**31 October 2022**
+Finished the first game. Created a shell for the new games.

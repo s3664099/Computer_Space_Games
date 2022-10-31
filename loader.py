@@ -13,7 +13,7 @@ def select_game():
 	#Creates a while loops to hold the menu to select the game
 	while (selecting):
 		util.clear_screen()
-		print("1) Starship Takeoff *")
+		print("1) Starship Takeoff")
 		print("2) Intergalactic Games *")
 		print("3) Evil Alien *")
 		print("4) Beat the Bug Eyes *")

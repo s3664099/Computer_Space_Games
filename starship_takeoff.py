@@ -13,6 +13,13 @@ Date: 20 October 2022
 Source: https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
 This game can be found on page 12 of Computer Battle Games, and it a python3 translation.
 
+The goal of this game is for the player to escape from the planet. The player knows the gravity of the planet
+but not the weight of the ship. The player needs to guess the force to be applied to launch the ship. If the
+force is too high or too low, the ship won't budge, but the player will be informed if it is too high or too
+low.
+
+The player gets 10 shots to escape from the planet.
+
 """
 
 instructions = "Starship Takeoff\n"
@@ -27,33 +34,56 @@ instructions = "{}mechanism comes into operation to prevent it being burnt\n".fo
 instructions = "{}up. if you are still on the planet after ten tries, the aliens\n".format(instructions)
 instructions = "{}will capture you\n\n".format(instructions)
 
-def main_game():
-
+#Sets the parameters for the game
+def set_parameters():
 	gravity = randint(0,20)
 	weight = randint(0,40)
 	esc_vel = gravity * weight
-	escaped = False
 
+	#Player knows the gravity, but not the weight of the ship
+	print("Gravity: {}".format(gravity))
+
+	return esc_vel
+
+#Checks the force the player uses to escape
+def check_force(force, esc_vel):
+
+	escaped = False
+	result = ""
+
+	#Compares the force with the escape velocity
+	if force>esc_vel:
+		result = "The force is too high. Fail-safe mechanism kicks in."
+	elif force<esc_vel:
+		result = "The force is too Low. The ship shudders but fails to take off."
+	else:
+		escaped = True
+
+	return escaped, result
+
+#Function that runs the main game
+def main_game():
+
+	esc_vel = set_parameters()
+
+	#Player gets 10 guesses
 	for x in range (10):
+
 		force = input("Type in force: ")
 
-		if force>esc_vel:
-			print("Too High")
-		elif force<esc_vel:
-			print("Too Low")
-		else:
-			x = 10
-			escaped = True
+		#Checks if the player escaped
+		escaped,result = check_force(force, esc_vel)
 
-		if x<10:
-			print("Try again")
+		#If successful
+		if escaped:
+			x=10
+		else:
+			print("{} Try again".format(result))
 
 	if escaped:
 		print("Congratulations, you managed to escape the planet")
 	else:
 		print("Unfortunately you were too slow. The Aliens got you")
-
-
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
