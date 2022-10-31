@@ -61,6 +61,28 @@ def check_force(force, esc_vel):
 
 	return escaped, result
 
+#Function to handle the input
+def get_force(esc_vel):
+
+	correct = False
+
+	while not correct:
+
+		force = input("Type in force: ")
+
+		#The input has to be a number
+		try:
+			force = int(force)
+			correct = True
+		except:
+			print("Please enter a number")
+
+	#Checks if the player escaped
+	escaped,result = check_force(force, esc_vel)
+
+	return escaped,result
+
+
 #Function that runs the main game
 def main_game():
 
@@ -69,14 +91,11 @@ def main_game():
 	#Player gets 10 guesses
 	for x in range (10):
 
-		force = input("Type in force: ")
-
-		#Checks if the player escaped
-		escaped,result = check_force(force, esc_vel)
+		escaped,result = get_force(esc_vel)		
 
 		#If successful
 		if escaped:
-			x=10
+			break
 		else:
 			print("{} Try again".format(result))
 
