@@ -70,7 +70,11 @@ games.
 This is a simply guessing game. The player needs to guess a correct number to win. If the number is too high or
 Too low, then a message advising the player is given. The player gets 10 guesses to succeed.
 
-##Updates
+**Intergalactic Games**
+This is another guessing game, though it is trickier than the previous since the calculations are somewhat complex.
+Also, the player needs to enter two sets of numbers as opposed to one.
+
+## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
 
@@ -80,3 +84,6 @@ is launched outside of the loader
 
 **31 October 2022**
 Finished the first game. Created a shell for the new games.
+
+**1st November 2022**
+Added Intergalactic Games.

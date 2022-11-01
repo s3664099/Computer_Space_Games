@@ -15,6 +15,10 @@ Date: 31 October 2022
 Source: https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
 This game can be found on page 6 of Computer Space Games, and it a python3 translation.
 
+This is another guessing game, where you have to guess the angle and velocity to successfully launch a satellite.
+You are provided with a height that you have to reach, and then asked to enter an angle and a velocity. If you
+guess correctly, you win, otherwise you are provided with a hint for the next shot. You have eight chances in which
+to successfully launch the satellite.
 
 """
 
@@ -27,6 +31,7 @@ instructions = "{}Century TV. The crucial decisions about the angle and\n".forma
 instructions = "{}speed of the launching rocket rests on your shoulders.\n".format(instructions)
 instructions = "{}Can you do it?".format(instructions)
 
+#This function generates a random height, and informs the player of the height required
 def get_height():
 
 	height = randint(1,100)
@@ -35,43 +40,50 @@ def get_height():
 
 	return height
 
+#This function retrieves a numerical input.
 def get_input(text,max_value):
 
 	correct = False
 
+	#Loops until a correct input is recieved.
 	while not correct:
 
 		try:
 			response = int(input(text))
 
+			#If the input is outside of the range, the player is informed
 			if response>max_value:
 				print("Please enter a value less than {}".format(max_value))
 			elif response<0:
 				print("Please enter a value greater than 0")
 			else:
 				correct = True
+
+		#Catches the error if the input is not a number
 		except:
 			print("Please enter a number")
 
 	return response
 
+#Function that calculates the shot
 def calculate_shot(angle,height,velocity):
 
 	angle = angle-math.atan(height/3)*(180/3.14159)
 	velocity = velocity-(3000*math.sqrt(height+1/height))
 
-	print(angle)
-	print(velocity)
-
 	return check_result(angle,velocity)
 
+#Checks the result of the shot
 def check_result(angle,velocity):
 
 	result = ""
 
+	#Shot is successful
 	if abs(angle)<2 and abs(velocity)<100:
 		result = True
 	else:
+
+		#Shot is not successful, so hits are provided
 		if angle<-2:
 			result = "Too Shallow"
 		elif angle>2:
@@ -85,14 +97,17 @@ def check_result(angle,velocity):
 
 def main_game():
 
+	#Gets the height required, and sets the success flag
 	height = get_height()
 	success = False
 
 	for x in range(8):
 
+	 	#Gets the players input
 		angle = get_input("Enter Angle (0-90): ",90)
 		velocity = get_input("Enter Speed (0-40000): ",40000)
 
+		#Gets the result of the shot
 		result = calculate_shot(angle,height,velocity)
 
 		if result == True:
