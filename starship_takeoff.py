@@ -5,13 +5,13 @@ import sys
 from random import randint
 
 """
-Title: Battle at Traitor's Castle
+Title: Intergalactic Games
 Author: Daniel Isaaman & Jenny Tyler
 Translator: David Sarkies
 Version: 0
-Date: 20 October 2022
+Date: 31 October 2022
 Source: https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
-This game can be found on page 12 of Computer Battle Games, and it a python3 translation.
+This game can be found on page 4 of Computer Space Games, and it a python3 translation.
 
 The goal of this game is for the player to escape from the planet. The player knows the gravity of the planet
 but not the weight of the ship. The player needs to guess the force to be applied to launch the ship. If the

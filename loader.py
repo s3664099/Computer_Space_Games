@@ -3,6 +3,7 @@
 import util
 import time
 import starship_takeoff
+import intergalactic_games
 
 
 #Function that displays the games available, and allows the user to select them
@@ -40,6 +41,8 @@ def select_game():
 
 		elif response == "1":
 			start_game("Starship Takeoff",starship_takeoff)
+		elif response == "2":
+			start_game("Intergalactic Games",intergalactic_games)
 		else:
 			print("You have entered an incorrect option")
 			time.sleep(5)
