@@ -101,6 +101,10 @@ def main_game():
 	height = get_height()
 	success = False
 
+	#Set variables to calculate the bonus
+	bonus = 0
+	bonus_calculation = 0
+
 	for x in range(8):
 
 	 	#Gets the players input
@@ -112,12 +116,20 @@ def main_game():
 
 		if result == True:
 			success = True
+			bonus_calculation = x
 			break
 		else:
 			print(result)
 
 	if success:
 		print("You've done it. NCTV wins - thanks to you")
+
+		#Calculates the bonus earned this round
+		bonus_earned = bonus+(1000/bonus_calculation)
+		bonus = bonus + bonus_earned
+
+		print("You have earned a bonus of ${}0".format(bonus_earned))
+		print("Your total bonus is ${}0".format(bonus))
 	else:
 		print("You've failed. You're fired like a programmer at Twitter")
 
