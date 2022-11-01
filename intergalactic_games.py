@@ -48,8 +48,11 @@ def get_input(text,max_value):
 	#Loops until a correct input is recieved.
 	while not correct:
 
+		response = input(text)
+
 		try:
-			response = int(input(text))
+			
+			response = int(response)
 
 			#If the input is outside of the range, the player is informed
 			if response>max_value:
@@ -61,7 +64,11 @@ def get_input(text,max_value):
 
 		#Catches the error if the input is not a number
 		except:
-			print("Please enter a number")
+
+			if response == "x":
+				exit()
+			else:
+				print("Please enter a number")
 
 	return response
 
@@ -101,37 +108,46 @@ def main_game():
 	height = get_height()
 	success = False
 
+	#Sets the flag indicating that you are still employed
+	still_employed = True
+
 	#Set variables to calculate the bonus
 	bonus = 0
 	bonus_calculation = 0
 
-	for x in range(8):
+	while still_employed:
+		for x in range(8):
 
-	 	#Gets the players input
-		angle = get_input("Enter Angle (0-90): ",90)
-		velocity = get_input("Enter Speed (0-40000): ",40000)
+		 	#Gets the players input
+			angle = get_input("Enter Angle (0-90): ",90)
+			velocity = get_input("Enter Speed (0-40000): ",40000)
 
-		#Gets the result of the shot
-		result = calculate_shot(angle,height,velocity)
+			#Gets the result of the shot
+			result = calculate_shot(angle,height,velocity)
 
-		if result == True:
-			success = True
-			bonus_calculation = x
-			break
+			if result == True:
+				success = True
+				bonus_calculation = x
+				break
+			else:
+				print(result)
+
+		if success:
+			print("You've done it. NCTV wins - thanks to you")
+
+			#Calculates the bonus earned this round
+			bonus_earned = bonus+(1000/bonus_calculation)
+			bonus = bonus + bonus_earned
+
+			print("You have earned a bonus of ${:.2f}".format(bonus_earned))
+			print("Your total bonus is ${:.2f}".format(bonus))
+
+			success = False
 		else:
-			print(result)
+			still_employed = False
 
-	if success:
-		print("You've done it. NCTV wins - thanks to you")
-
-		#Calculates the bonus earned this round
-		bonus_earned = bonus+(1000/bonus_calculation)
-		bonus = bonus + bonus_earned
-
-		print("You have earned a bonus of ${}0".format(bonus_earned))
-		print("Your total bonus is ${}0".format(bonus))
-	else:
-		print("You've failed. You're fired like a programmer at Twitter")
+	print("You've failed. You're fired like a programmer at Twitter")
+	print("You have earned ${:.2f} in bonuses.".format(bonus))
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
