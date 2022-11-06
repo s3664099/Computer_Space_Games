@@ -6,20 +6,18 @@ import util
 from random import randint
 
 """
-Title: 
+Title: Evil Alien
 Author: Daniel Isaaman & Jenny Tyler
 Translator: David Sarkies
 Version: 0
 Date: 20 October 2022
 Source: https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
-This game can be found on page 12 of Computer Space Games, and it a python3 translation.
+This game can be found on page 8 of Computer Space Games, and it a python3 translation.
 
-The goal of this game is for the player to escape from the planet. The player knows the gravity of the planet
-but not the weight of the ship. The player needs to guess the force to be applied to launch the ship. If the
-force is too high or too low, the ship won't budge, but the player will be informed if it is too high or too
-low.
+This is another guessing game, though this game is played on a three dimensional space. Thus the player needs
+to guess the x,y,and z co-ordinates of the enemy. If the player misses, a hint is provided.
 
-The player gets 10 shots to escape from the planet.
+The size of the space is determined by the difficulty, and the number of goes is determined by the size of the screen
 
 """
 
@@ -28,12 +26,12 @@ instructions = "{}lurks Elron, the Evil Alient. You have managed to \n".format(i
 instructions = "{}deactivate all but his short range weapons but he can\n".format(instructions)
 instructions = "{}still make his ship invisible. You know he is somewhere\n".format(instructions)
 instructions = "{}within the three-dimensional grid you can see on your\n".format(instructions)
-instructions = "{}ship's screen (see below), but where?\n"
+instructions = "{}ship's screen (see below), but where?\n".format(instructions)
 instructions = "{}You have four space bombs. Each one can be exploded at\n".format(instructions)
 instructions = "{}a position in the grid specified by three numbers between\n".format(instructions)
 instructions = "{}0 and 9, which your computer will ask you for. Can you\n".format(instructions)
 instructions = "{}blast the Evil Elron out of space before he creeps up\n".format(instructions)
-instructions = "{}and captures you?"
+instructions = "{}and captures you?".format(instructions)
 
 #Compares the shot to the enemy's position
 def check_coordinates(less,greater,comp_val,play_val):
@@ -67,7 +65,9 @@ def compare_shot(x,y,z,x1,y1,d1):
 #Gets the player's input, and calculates the number of shots
 def player_shots(x,y,z,goes):
 
-	for x in range(goes):
+	print("{} {} {}".format(x,y,z))
+
+	for l in range(goes):
 
 		#The player's turn
 		x1 = util.get_num_input("X Position",0,9)
@@ -84,10 +84,10 @@ def main_game():
 
 	#Sets the difficulty of the game. The number of goes is determined by the size
 	#of the game area
-	difficulty = ("Please enter the difficulty",1,9)
-
-	size = (difficulty+1)*3
-	goes = difficulty+1
+	difficulty = util.get_num_input("Please enter the difficulty",1,9)
+	difficulty += 1
+	size = difficulty*3
+	goes = difficulty
 
 	if goes<3:
 		goes = 3
@@ -108,4 +108,4 @@ def main_game():
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
-	loader.start_game("Starship Takeoff",sys.modules[__name__])
+	loader.start_game("Evil Alien",sys.modules[__name__])

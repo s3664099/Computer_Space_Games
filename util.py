@@ -152,10 +152,11 @@ def get_num_input(description,minimum,maximum):
 		query = input("{} ({}-{}):".format(description,minimum,maximum))
 
 		try:
+			query = int(query)
 			#Does it fall within the parameters
 			if query > maximum:
 				print("Please enter a number less than {}".format(maximum))
-			elif query < 0:
+			elif query < minimum:
 				print("Please enter a number greater than {}".format(minimum))
 			else:
 				correct = True

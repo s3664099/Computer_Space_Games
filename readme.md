@@ -74,6 +74,10 @@ Too low, then a message advising the player is given. The player gets 10 guesses
 This is another guessing game, though it is trickier than the previous since the calculations are somewhat complex.
 Also, the player needs to enter two sets of numbers as opposed to one.
 
+**Evil Alien**
+Basically another guessing game where you have to guess the position of the enemy. In this one there are three numbers
+you have to guess, representing a three dimensional grid.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -87,3 +91,6 @@ Finished the first game. Created a shell for the new games.
 
 **1st November 2022**
 Added Intergalactic Games.
+
+**6th November 2022**
+Added Evil Alien, and also a function in util for getting a player input between two numbers
