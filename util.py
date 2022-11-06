@@ -137,3 +137,31 @@ def ask_instructions():
 	answer = yes_or_no(answer)
 
 	return answer
+
+#Function that asks the player for a number between a min and max
+#Checks if the response falls within the listed parameters and returns if it does
+def get_num_input(description,minimum,maximum):
+
+	#Sets query and correct flag
+	correct = False
+	query = -1
+
+	#Loop while the response is incorrect
+	while not correct:
+
+		query = input("{} ({}-{}):".format(description,minimum,maximum))
+
+		try:
+			#Does it fall within the parameters
+			if query > maximum:
+				print("Please enter a number less than {}".format(maximum))
+			elif query < 0:
+				print("Please enter a number greater than {}".format(minimum))
+			else:
+				correct = True
+		#Is it a number
+		except:
+			print("Please enter a number between {} and {}".format(minimum,maximum))
+
+	return query
+
