@@ -78,6 +78,11 @@ Also, the player needs to enter two sets of numbers as opposed to one.
 Basically another guessing game where you have to guess the position of the enemy. In this one there are three numbers
 you have to guess, representing a three dimensional grid.
 
+**Beat the Bug Eyes**
+This game will display a pair of eyes at one of 4 positions on the screen. The player needs to select which one of the
+positions it is (by pressing 1,2,3 or 4). Any other key, or the wrong position, is a miss. The correct position adds
+one to the score.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -94,3 +99,9 @@ Added Intergalactic Games.
 
 **6th November 2022**
 Added Evil Alien, and also a function in util for getting a player input between two numbers
+
+**8th November 2022**
+Added Beat the Bug Eyes to the list of games
+
+## TO DO
+Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time

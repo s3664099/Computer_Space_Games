@@ -5,6 +5,7 @@ import time
 import starship_takeoff
 import intergalactic_games
 import evil_alien
+import beat_bug
 
 #Function that displays the games available, and allows the user to select them
 def select_game():
@@ -16,8 +17,8 @@ def select_game():
 		util.clear_screen()
 		print("1) Starship Takeoff")
 		print("2) Intergalactic Games")
-		print("3) Evil Alien *")
-		print("4) Beat the Bug Eyes *")
+		print("3) Evil Alien")
+		print("4) Beat the Bug Eyes")
 		print("5) Moonlander *")
 		print("6) Monsters of Galacticon *")
 		print("7) Alien Snipers *")
@@ -44,7 +45,9 @@ def select_game():
 		elif response == "2":
 			start_game("Intergalactic Games",intergalactic_games)
 		elif response == "2":
-			start_game("Evil Alien",evil_alien)	
+			start_game("Evil Alien",evil_alien)
+		elif response == "3":
+			start_game("Beat the Bug Eyes",beat_bug)		
 		else:
 			print("You have entered an incorrect option")
 			time.sleep(5)
