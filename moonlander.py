@@ -3,18 +3,19 @@
 import loader
 import sys
 import util
-from random import randint
 
 """
 Title: Moonlander
 Author: Daniel Isaaman & Jenny Tyler
 Translator: David Sarkies
-Version: 0
-Date: 12 November 2022
+Version: 1.0
+Date: 13 November 2022
 Source: https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
 This game can be found on page 12 of Computer Space Games, and it a python3 translation.
 
-
+I noticed that no random calculations are used in this game, but the goal of the game is that they player
+needs to land safely on the moon. This is done by burning fuel and that descending. The thing is that
+the velocity on touch down must be under a certain number, otherwise the player will crash.
 
 """
 
@@ -35,36 +36,43 @@ def display_stats(time,height,velocity,fuel):
 #Main Game
 def main_game():
 
+	#Sets game stats
 	time = 0
 	height = 500
 	velocity = 50
 	fuel = 150
 
+	#Main loop
 	while height>0:
 
-		#util.clear_screen()
+		#Clears the screen and displays the main stats
+		util.clear_screen()
 		display_stats(time,height,velocity,fuel)
 
 		burn = fuel
 
+		#Checks to see how much fuel is left, and requests player input
 		if fuel >0:
 			burn = util.get_num_input("Burn",0,30)
 
+			#Cannot burn more fuel than is in the tank
 			if burn > fuel:
 				burn = fuel
 
+		#Calculates velocity
 		burn_vel = velocity - burn + 5
-
 		fuel -= burn
 
+		#Checks how close to the ground the player is
 		if ((burn_vel+velocity)/2) <= height:
-
 			height -= (burn_vel+velocity)/2
 			time += 1
 			velocity = burn_vel
 		else:
+			height -= (burn_vel+velocity)/2
 			burn_vel = velocity+((5-burn)*(height/velocity))
 
+	#Calculates if the player crashed or not	
 	if burn_vel > 5:
 		print("You crashed - all dead!")
 	elif burn_vel > 1:

@@ -83,6 +83,9 @@ This game will display a pair of eyes at one of 4 positions on the screen. The p
 positions it is (by pressing 1,2,3 or 4). Any other key, or the wrong position, is a miss. The correct position adds
 one to the score.
 
+**Moonlander**
+Basically a game where you need to land a ship on the moon. You control the amount of fuel you burn, and you can't land too fast, otherwise you will crash.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -102,6 +105,9 @@ Added Evil Alien, and also a function in util for getting a player input between
 
 **8th November 2022**
 Added Beat the Bug Eyes to the list of games
+
+**13th November 2022**
+Added Moonlander to the games
 
 ## TO DO
 Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time
