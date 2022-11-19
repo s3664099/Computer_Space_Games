@@ -8,6 +8,7 @@ import evil_alien
 import beat_bug
 import moonlander
 import monsters_galacticon
+import alien_sniper
 
 #Function that displays the games available, and allows the user to select them
 def select_game():
@@ -23,7 +24,7 @@ def select_game():
 		print("4) Beat the Bug Eyes")
 		print("5) Moonlander")
 		print("6) Monsters of Galacticon")
-		print("7) Alien Snipers *")
+		print("7) Alien Snipers")
 		print("8) Asteroid Belt *")
 		print("9) Trip into the Future *")
 		print("10) Death Valley *")
@@ -53,7 +54,9 @@ def select_game():
 		elif response == "5":
 			start_game("Moonlander",moonlander)	
 		elif response == "6":
-			start_game("Monsters of Galacticon",monsters_galacticon)		
+			start_game("Monsters of Galacticon",monsters_galacticon)
+		elif response == "7":
+			start_game("Alien Snipers",alien_sniper)		
 		else:
 			print("You have entered an incorrect option")
 			time.sleep(5)

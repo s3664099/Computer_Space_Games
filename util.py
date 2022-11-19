@@ -1,5 +1,6 @@
 from os import system
 from inputimeout import inputimeout, TimeoutOccurred
+from pynput import keyboard
 
 """
 Title: Util.py
@@ -24,6 +25,9 @@ Update 22/10/2022
 Added a few more since, including a start game function that pretty much does what
 all the games do at the beginning.
 Added another input with timeout function to return true or false
+
+Update 19/11/2022
+Added an inkey function
 """
 
 #Performs the start game functions.
@@ -89,6 +93,8 @@ def input_with_timeout_no_comment(prompt, timeout):
 #Handles asking the player a yes or no question
 def yes_or_no(answer):
 
+	reply=""
+
 	correct = False
 
 	#Loop while waiting for the correct answer
@@ -96,6 +102,10 @@ def yes_or_no(answer):
 
 		print()	
 		reply = input()
+
+		#When using the inkey function, this is the way to flush the
+		#inputs that have been stored
+		reply = reply[len(reply)-1]
 
 		#Sets the flag as correct, and the player will replay
 		if reply.upper() == "Y":
@@ -165,4 +175,25 @@ def get_num_input(description,minimum,maximum):
 			print("Please enter a number between {} and {}".format(minimum,maximum))
 
 	return query
+
+#Function to replicate the inkey/get function from C64 basic
+#Not working perfectly as stores the previous key presses
+def inkey(time_delay):
+
+	response = ""
+
+	#https://pypi.org/project/pynput/
+	with keyboard.Events() as events:
+
+		#Sets a time delay for the input
+		event = events.get(time_delay)
+
+		if event is None:
+			print()
+		else:
+
+			#Retrieves the keypress
+			response = str(event.key)[1].upper()
+
+	return response
 

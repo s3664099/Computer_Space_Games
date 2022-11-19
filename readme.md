@@ -60,6 +60,11 @@ one of them involving detecting key presses. However, there are a couple of prob
 
 I attempted to use it on one of the games, but unfortunately it didn't work as expected.
 
+19 November 2022
+I have found a python3 [import](https://pypi.org/project/pynput/) that seems to work is required. However
+the problem is that the keys that have been pressed are then stored in a buffer, and released when an input is
+requested.
+
 **Pygame**
 This is also a solution, but it adds a lot more to the game than otherwise, and adds a lot of time to coding these
 games.
@@ -86,6 +91,16 @@ one to the score.
 **Moonlander**
 Basically a game where you need to land a ship on the moon. You control the amount of fuel you burn, and you can't land too fast, otherwise you will crash.
 
+**Monsters of Galacticon**
+You are confronted with one of four monsters, and have to chose a weapon with which to attack. After some complicated
+calcuations, the result of the attack is displayed. You start with a specific number of men, and once all men are dead
+you lose, unless you beat off all 8 monsters.
+
+**Alien Snipers**
+You need to solve a series of puzzles which are times. You are presented with a letter, and a number, and have to guess
+the letter that is the exact number of numbers past the letter. The guesses are timed, and once you press the key
+the guess is recorded. A score is kept.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -108,6 +123,14 @@ Added Beat the Bug Eyes to the list of games
 
 **13th November 2022**
 Added Moonlander to the games
+
+**17th November 2022**
+Added a rough draft of Monsters of Galacticon
+
+**19th November 2022**
+Completed and tidied up Monsters of Galacticon.
+Added Alien Snipers.
+Also added an inkey function - [here](https://pypi.org/project/pynput/)
 
 ## TO DO
 Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time
