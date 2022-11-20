@@ -65,6 +65,9 @@ I have found a python3 [import](https://pypi.org/project/pynput/) that seems to 
 the problem is that the keys that have been pressed are then stored in a buffer, and released when an input is
 requested.
 
+There is also an issue with the buffer being recorded at the beginning, so I've had to skip the first turn 
+for Asteroid Belt.
+
 **Pygame**
 This is also a solution, but it adds a lot more to the game than otherwise, and adds a lot of time to coding these
 games.
@@ -101,6 +104,11 @@ You need to solve a series of puzzles which are times. You are presented with a 
 the letter that is the exact number of numbers past the letter. The guesses are timed, and once you press the key
 the guess is recorded. A score is kept.
 
+**Asteroid Belt**
+Another guessing game. A number of stars are placed on the screen, and you need to guess the number of stars in
+a limited amount of time. I probably didn't need to use the inkey function though, just the timed input. However
+I'll leave it as is.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -131,6 +139,9 @@ Added a rough draft of Monsters of Galacticon
 Completed and tidied up Monsters of Galacticon.
 Added Alien Snipers.
 Also added an inkey function - [here](https://pypi.org/project/pynput/)
+
+**20th November 2022**
+Added Asteroid Belt.
 
 ## TO DO
 Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time
