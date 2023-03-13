@@ -59,7 +59,9 @@ def select_game():
 		elif response == "7":
 			start_game("Alien Snipers",alien_sniper)
 		elif response == "8":
-			start_game("Asteroid Belt",asteroid_belt)		
+			start_game("Asteroid Belt",asteroid_belt)
+		elif response == "9":
+			start_game("Trip into the Future",trip_future)					
 		else:
 			print("You have entered an incorrect option")
 			time.sleep(5)

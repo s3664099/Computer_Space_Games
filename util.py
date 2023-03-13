@@ -159,20 +159,79 @@ def get_num_input(description,minimum,maximum):
 	#Loop while the response is incorrect
 	while not correct:
 
-		query = input("{} ({}-{}):".format(description,minimum,maximum))
+		query = input("{} ({}-{}): ".format(description,minimum,maximum))
 
 		try:
 			query = int(query)
+
 			#Does it fall within the parameters
-			if query > maximum:
-				print("Please enter a number less than {}".format(maximum))
-			elif query < minimum:
-				print("Please enter a number greater than {}".format(minimum))
-			else:
-				correct = True
+			correct = check_range(query,minimum,maximum)
+
 		#Is it a number
 		except:
 			print("Please enter a number between {} and {}".format(minimum,maximum))
+
+	return query
+
+#Checks if the query falls within the parameters
+def check_range(number,minimum,maximum):
+
+	correct = False
+
+	#Does it fall within the parameters
+	if number > maximum:
+		print("Please enter a number less than {}".format(maximum))
+	elif number < minimum:
+		print("Please enter a number greater than {}".format(minimum))
+	else:
+		correct = True
+
+	return correct
+
+#Function that asks the player for a decimal between a min and max
+#Checks if the response falls within the listed parameters and returns if it does
+def get_float_input(description,minimum,maximum):
+
+	#Sets query and correct flag
+	correct = False
+	query = -1
+
+	#Loop while the response is incorrect
+	while not correct:
+
+		query = input("{} ({}-{}): ".format(description,minimum,maximum))
+
+		try:
+			query = float(query)
+			correct = check_range(query,minimum,maximum)
+
+		#Is it a float
+		except Exception as e:
+
+			print("Please enter a number between {} and {}".format(minimum,maximum))
+
+	return query
+
+#Returns a positive number
+def get_number_input(description):
+
+	#Sets the query and correct flag
+	correct = False
+	query = -1
+
+	#Loop while response is incorrect
+	while not correct:
+		query = input("{}: ".format(description))
+
+		try:
+			query = float(query)
+
+			if (query <1):
+				print("Please enter a positive number")
+			else:
+				correct = True
+		except:
+			print("Please enter a positive number")
 
 	return query
 

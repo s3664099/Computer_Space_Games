@@ -109,6 +109,12 @@ Another guessing game. A number of stars are placed on the screen, and you need 
 a limited amount of time. I probably didn't need to use the inkey function though, just the timed input. However
 I'll leave it as is.
 
+**Trip into the Future**
+This is a mathematical problem. You have to travel so many years into the future but you have to do it so that you
+don't die. You are given a number of years you need to travel, and you need to do that in less than 50 year, and
+arrive within 5 years of the target. You need to select a speed (a percentage of the speed of light) and a distance.
+If the calculation is off, you lose, otherwise you win.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
