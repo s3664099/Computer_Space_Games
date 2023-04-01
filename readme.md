@@ -115,6 +115,11 @@ don't die. You are given a number of years you need to travel, and you need to d
 arrive within 5 years of the target. You need to select a speed (a percentage of the speed of light) and a distance.
 If the calculation is off, you lose, otherwise you win.
 
+**Death Valley**
+This is more of an arcade game where you have to maneuver your ship through a valley whose walls are regularly
+changing. I have managed to hack together an inkey function that seems to work, though you require the getkey 
+python library to run this game.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
