@@ -1,6 +1,9 @@
 from os import system
 from inputimeout import inputimeout, TimeoutOccurred
 from pynput import keyboard
+import time
+import select
+import sys
 
 """
 Title: Util.py
@@ -255,4 +258,3 @@ def inkey(time_delay):
 			response = str(event.key)[1].upper()
 
 	return response
-
