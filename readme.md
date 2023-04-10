@@ -120,6 +120,11 @@ This is more of an arcade game where you have to maneuver your ship through a va
 changing. I have managed to hack together an inkey function that seems to work, though you require the getkey 
 python library to run this game.
 
+**Space Mine**
+This is one of those old school strategy games where you have to manage resources and keep people happy. Basically
+you are in charge of a space mine, and you need to last ten years without either setting off a revolt or working the
+people too hard. There are a lot of mathematical calculations in this one, and it certainly looks quite difficult.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -153,6 +158,9 @@ Also added an inkey function - [here](https://pypi.org/project/pynput/)
 
 **20th November 2022**
 Added Asteroid Belt.
+
+**10 April 2023**
+Added Space Mine
 
 ## TO DO
 Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time

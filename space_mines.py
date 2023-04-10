@@ -39,6 +39,18 @@ cash = randint(10,59)
 food = randint(80,119)
 ore_mine = randint(40,119)
 
+#Resets for a new game
+def reset():
+	global ore_stored,satisfaction,year,mines,people,food,ore_mine
+
+	ore_stored = 0
+	satisfaction = 1
+	year = 1
+	mines = randint(5,7)
+	people = randint(40,99)
+	food = randint(80,119)
+	ore_mine = randint(40,119)
+
 #Displays the stats for the game
 def display_stats(ore_price,mine_price):
 	stats = "Year: {}\n\nThere are {} people in the colony.\nYou have {} mines and ${}\n".format(year,people,mines,cash)
@@ -120,38 +132,46 @@ def main_game():
 	global people
 	global year
 	playing = True
+	play_again = True
 
-	while playing:
+	while play_again:
+		while playing:
 		
-		util.clear_screen()
+			util.clear_screen()
 		
-		#Sets the buy/sell price for the year
-		buysell_price_mines = randint(2000,3999)
-		buysell_price_ore = randint(7,19)
+			#Sets the buy/sell price for the year
+			buysell_price_mines = randint(2000,3999)
+			buysell_price_ore = randint(7,19)
 		
-		#Updates the storage
-		ore_stored = ore_mine * mines
-		print(display_stats(buysell_price_ore,buysell_price_mines))
+			#Updates the storage
+			ore_stored = ore_mine * mines
+			print(display_stats(buysell_price_ore,buysell_price_mines))
 	
-		#Selling Phase
-		ore_stored,cash = to_sell("How much ore would you like to sell? ",ore_stored,cash,buysell_price_ore)
-		mines,cash = to_sell("How many mines would you like to sell? ",mines,cash,buysell_price_mines)
+			#Selling Phase
+			ore_stored,cash = to_sell("How much ore would you like to sell? ",ore_stored,cash,buysell_price_ore)
+			mines,cash = to_sell("How many mines would you like to sell? ",mines,cash,buysell_price_mines)
 
-		#Buying Phase
-		print("\n\nYou have ${} cash on hand\n\n".format(cash))
-		print("Buying\n")
-		satisfaction = buy_food(satisfaction,cash,people)
-		mines,cash = buy_mines(mines,cash,buysell_price_mines)
+			#Buying Phase
+			print("\n\nYou have ${} cash on hand\n\n".format(cash))
+			print("Buying\n")
+			satisfaction = buy_food(satisfaction,cash,people)
+			mines,cash = buy_mines(mines,cash,buysell_price_mines)
 
-		result,playing = turn_calculation()
+			result,playing = turn_calculation()
 		
-		year +=1
+			year +=1
 
-		if (year>10):
-			result = "You have satisfied your term in office"
-			playing = False
+			if (year>10):
+				result = "You have satisfied your term in office"
+				playing = False
 
-	print(result)
+			print(result)
+
+		play_again = play_again(False)
+
+		if play_again == True:
+
+
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
