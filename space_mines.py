@@ -14,12 +14,7 @@ Date: 10 April 2023
 Source: https://drive.google.com/file/d/0Bxv0SsvibDMTNlMwTi1PTlVxc2M/view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
 This game can be found on page 24 of Computer Space Games, and it a python3 translation.
 
-The goal of this game is for the player to escape from the planet. The player knows the gravity of the planet
-but not the weight of the ship. The player needs to guess the force to be applied to launch the ship. If the
-force is too high or too low, the ship won't budge, but the player will be informed if it is too high or too
-low.
-
-The player gets 10 shots to escape from the planet.
+The goal of this game is to manage a mining colony, and to last 10 years without causing any major catastrophe
 
 """
 
