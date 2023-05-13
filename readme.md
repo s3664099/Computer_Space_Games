@@ -125,6 +125,12 @@ This is one of those old school strategy games where you have to manage resource
 you are in charge of a space mine, and you need to last ten years without either setting off a revolt or working the
 people too hard. There are a lot of mathematical calculations in this one, and it certainly looks quite difficult.
 
+**Space Rescue**
+You could say that this is a resource allocation game. You have to assign energy to reach a planet, taking
+into account the fact that there will be events along the way (randomly mind you). Upon reaching the planet
+you need to have enough energy left to make the landing, and to even get out of the craft. It is basically
+making certain calculations (if you know the calculations) to use enough to get there, and to land safely.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -161,6 +167,9 @@ Added Asteroid Belt.
 
 **10 April 2023**
 Added Space Mine
+
+**13 May 2023**
+Added Space Rescue
 
 ## TO DO
 Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time
