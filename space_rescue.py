@@ -33,15 +33,36 @@ instructions = "{}after which you will get a report of the events on the way. Yo
 instructions = "{}then land on the planet ...".format(instructions)
 
 #Sets the variables for the game
-distance = randint(101,900)
-energy = randint(401,800)
-time = int(distance/math.sqrt(energy/5) + 0.5)
+def set_variables():
+	distance = randint(101,900)
+	energy = randint(401,800)
+	time = int(distance/math.sqrt(energy/5) + 0.5)
+
+	return distance,energy,time
 
 #Displays the stats
 def display_stats(distance,energy,time):
 	print("The planet is {} units away".format(distance))
 	print("You have {} units of energy".format(energy))
 	print("And a time limit of {} days".format(time))
+
+#Get details of the flight
+def get_flight(energy):
+
+	sufficient_power = False
+
+	while not sufficient_power:
+		print("\nEnergy Distribution")
+		power = util.get_number_input("to engines")
+		life_support = util.get_number_input("to life support")
+		shields = util.get_number_input("to shields")
+
+		if(power+life_support+shields>energy):
+			print("You don't have enough energy")
+		else:
+			sufficient_power = True
+
+	return power,life_support,shields	
 
 #Determines the events that may occur during the trip
 def events(shields,distance,velocity,life_support):
@@ -69,7 +90,7 @@ def events(shields,distance,velocity,life_support):
 
 		time.sleep(1)
 
-	return shields,distance,velocity.life_support
+	return shields,distance,velocity,life_support
 
 #Determines the player's arrival status
 def arrival(shields,life_support,velocity,time,eta):
@@ -91,6 +112,7 @@ def arrival(shields,life_support,velocity,time,eta):
 
 	return arrived_safely
 
+#Generates the stats of the planet
 def planet_stats(value):
 
 	stat = "High"
@@ -102,11 +124,12 @@ def planet_stats(value):
 
 	return value,stat
 
+#Function for landing on the planet
 def planet(excess_power):
 
 	sufficient_power = False
 
-	while (!sufficient_power):
+	while not sufficient_power:
 
 		boosters = util.get_number_input("How much energy to boosters")
 		heat_shields = util.get_number_input("How much energy to heat shields")
@@ -118,6 +141,7 @@ def planet(excess_power):
 
 	return boosters,heat_shields
 
+#Determines the results of landing on the planet
 def landing_result(boosters,heat_shields,gravity,atmosphere):
 
 	landed_safely = True
@@ -134,20 +158,10 @@ def landing_result(boosters,heat_shields,gravity,atmosphere):
 def main_game():
 
 	util.clear_screen()
-	display_stats(distance,energy,time)
+	distance,energy,time_to_planet = set_variables()
+	display_stats(distance,energy,time_to_planet)
 
-	sufficient_power = False
-
-	while(!sufficient_power):
-		print("Energy Distribution")
-		power = util.get_number_input("to engines: ")
-		life_support = util.get_number_input("to life support: ")
-		shields = util.get_number_input("to shields: ")
-
-		if(power+life_support+shields>energy):
-			print("You don't have enough energy")
-		else:
-			sufficient_power = True
+	power,life_support,shields = get_flight(energy)
 
 	excess_power = energy-power-life_support-shields
 	velocity = int(math.sqrt(power))
@@ -167,7 +181,7 @@ def main_game():
 	print("Arrived in {} days".format(eta))
 
 	#If the player arrived safely
-	if (arrival(shields,life_support,velocity,time,eta)):
+	if (arrival(shields,life_support,velocity,time_to_planet,eta)):
 
 		gravity,grav = planet_stats(randint(5,15))
 		atmosphere,atmos = planet_stats(randint(5,15))
@@ -183,7 +197,7 @@ def main_game():
 
 			print("You landed successfully - well done")
 
-			if (excess_power-heat_shields-booster<=25):
+			if (excess_power-heat_shields-boosters<=25):
 				print("Pity you don't have enough energy to open the door")
 
 #Passes the current file as a module to the loader
