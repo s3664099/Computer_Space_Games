@@ -170,8 +170,7 @@ def main_game():
 		play_again = play_again(False)
 
 		if play_again == True:
-
-
+			reset()
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
