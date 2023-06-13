@@ -202,4 +202,4 @@ def main_game():
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
-	loader.start_game("Starship Takeoff",sys.modules[__name__])
+	loader.start_game("Space Rescue",sys.modules[__name__])
