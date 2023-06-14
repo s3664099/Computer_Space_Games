@@ -13,6 +13,7 @@ import asteroid_belt
 import death_valley
 import space_mines
 import space_rescue
+import touchdown
 
 #Function that displays the games available, and allows the user to select them
 def select_game():
@@ -21,7 +22,7 @@ def select_game():
 
 	#Creates a while loops to hold the menu to select the game
 	while (selecting):
-		util.clear_screen()
+		#util.clear_screen()
 		print("1) Starship Takeoff")
 		print("2) Intergalactic Games")
 		print("3) Evil Alien")
@@ -34,10 +35,8 @@ def select_game():
 		print("10) Death Valley")
 		print("11) Space Mines")
 		print("12) Space Rescue")
-		print("13) Touchdown *")
+		print("13) Touchdown")
 		print("X) Exit")
-		print()
-		print("Games marked with an asterix '*' haven't been incorporated yet")
 		print()
 		response = input()
 
@@ -70,7 +69,9 @@ def select_game():
 		elif response == "11":
 			start_game("Space Mines",space_mines)
 		elif response == "12":
-			start_game("Space Rescue",space_rescue)																	
+			start_game("Space Rescue",space_rescue)	
+		elif response == "13":
+			start_game("Touchdown",touchdown)																
 		else:
 			print("You have entered an incorrect option")
 			time.sleep(5)
@@ -92,5 +93,6 @@ def start_game(title,game):
 		replay = util.play_again(replay)
 
 if __name__ == '__main__':
+
 	select_game()
 
