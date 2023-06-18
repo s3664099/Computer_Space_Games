@@ -40,8 +40,19 @@ def transform_icon(icon):
 def display_icon(icon,x,y,gameDisplay):
 	gameDisplay.blit(icon, (x,y))
 
+#Displays text on the screen left-aligned
+def display_stat(text,display,size,display_height,display_width):
+
+	font = pygame.font.Font('freesansbold.ttf',size)
+	get_display(display).blit(font.render(text, True, white),[display_width,display_height])
+
+#Draws a bar of a determined length
+def draw_bar(display,start_pos,end_pos):
+
+	pygame.draw.line(display,white,start_pos,end_pos,width=10)
+
 #Displays a message on the screen
-def message_display(text ,display,size,textPosition):
+def message_display(text,display,size,textPosition):
 	display_width = 800
 	display_height = 600
 

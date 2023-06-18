@@ -34,10 +34,58 @@ def main_game():
 	graphics.set_caption("Touchdown")
 	display = graphics.display_screen()
 
+	#Display Star Background for the display
+	#Display rugged ground at the bottom
+
+	#Sets up the main variables
 	height = 100
 	fuel = 100
 	thrust = 0
+	velocity = 5+randint(1,10)
+	gravity = (randint(1,40)+40)/100
+
+	#Main Game Loop
+	while True:
+
+		display.fill([0,0,0])
+		graphics.display_stat("Gravity: {}".format(gravity),display,24,100,20)
+
+		display_stats(display,fuel,velocity,height,thrust)
+
+		pygame.display.update()
+
+
+	#Displays the ship at the top
+	#Checks for a key press to increase or decrease thrust
+
+	#The calculation for each move
+	#V1=V-T/20+G - Change in velocity
+	#F=F-T/10 - change in fuel
+	#H1=H-(V+V1)/10 Change in height
+
+	#If H<0 then landed
+	#IF (V+V1)<8 Check for a safe landing
+
+	#If H>100 then lost in space
+
+#Updates the values of the game statistics
+def display_stats(display,fuel,velocity,height,thrust):
+
+	graphics.display_stat("Fuel:",display,24,150,20)
+	graphics.draw_bar(display,[20,200],[20+fuel,200])
 	
+	graphics.display_stat("Vel:",display,24,250,20)
+	graphics.draw_bar(display,[20,300],[20+velocity,300])
+	
+	graphics.display_stat("Height:",display,24,350,20)
+	graphics.draw_bar(display,[20,400],[20+height,400])
+	
+	graphics.display_stat("Thrust:",display,24,450,20)
+	graphics.draw_bar(display,[20,500],[20+thrust,500])
+
+
+
+
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
