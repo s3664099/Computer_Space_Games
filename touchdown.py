@@ -72,10 +72,17 @@ def main_game():
 
 		pygame.display.update()
 
-		thrust = check_keypress(thrust)
+		if (fuel > 0):
+			thrust = check_keypress(thrust)
+			vel_tmp = velocity-(thrust/(20+gravity)) 	#Change in Velocity
+			fuel = fuel-abs(thrust/10) 					#Change in fuel
+		else:
+			thrust = 0
+			vel_tmp = velocity
 
-		vel_tmp = velocity-(thrust/(20+gravity)) 	#Change in Velocity
-		fuel = fuel-(thrust/10) 					#Change in fuel
+		if (fuel<0):
+			fuel = 0
+
 		height_tmp = height-((velocity+vel_tmp)/10) #Change in heigh
 
 		result = check_result(height,velocity+vel_tmp)
@@ -137,17 +144,13 @@ def display_stats(display,fuel,velocity,height,thrust):
 	graphics.draw_bar(display,[20,200],[20+fuel,200])
 	
 	graphics.display_stat("Vel:",display,24,250,20)
-	graphics.draw_bar(display,[20,300],[20+velocity,300])
+	graphics.draw_bar(display,[50,300],[50+velocity,300])
 	
 	graphics.display_stat("Height:",display,24,350,20)
 	graphics.draw_bar(display,[20,400],[20+height,400])
 	
 	graphics.display_stat("Thrust:",display,24,450,20)
-	graphics.draw_bar(display,[20,500],[20+thrust,500])
-
-
-
-
+	graphics.draw_bar(display,[50,500],[50+thrust,500])
 
 #Passes the current file as a module to the loader
 if __name__ == '__main__':
