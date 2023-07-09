@@ -5,6 +5,7 @@ import sys
 import util
 import pygame
 import graphics
+import time
 from random import randint
 
 """
@@ -16,6 +17,7 @@ Date: 13 June 2023
 Source: https://drive.google.com/file/d/part of your /view?resourcekey=0-kaU6eyAmIVhT3_H8RkHfHA
 This game can be found on page 30 of Computer Space Games, and it a python3 translation.
 
+Lunar Lander Icon: <a href="https://www.flaticon.com/free-icons/lander" title="lander icons">Lander icons created by imaginationlol - Flaticon</a>
 
 
 """
@@ -43,30 +45,90 @@ def main_game():
 	thrust = 0
 	velocity = 5+randint(1,10)
 	gravity = (randint(1,40)+40)/100
+	landerImg = graphics.create_icon("lander.png")
+	landerImg = graphics.transform_icon(landerImg)
+	landerImgUp = graphics.create_icon("lander_thrstup.png")
+	landerImgUp = graphics.transform_icon(landerImgUp)
+	landerImgDwn = graphics.create_icon("lander_thrstdwn.png")
+	landerImgDwn = graphics.transform_icon(landerImgDwn)
+	lander_x = graphics.get_width()/2
+	lander_y = 0
+	result = 0
 
 	#Main Game Loop
-	while True:
+	while result == 0:
 
 		display.fill([0,0,0])
 		graphics.display_stat("Gravity: {}".format(gravity),display,24,100,20)
 
 		display_stats(display,fuel,velocity,height,thrust)
 
+		if thrust < -8:
+			graphics.display_icon(landerImgUp,lander_x,lander_y,display)
+		elif thrust > 8:
+			graphics.display_icon(landerImgDwn,lander_x,lander_y,display)
+		else:
+			graphics.display_icon(landerImg,lander_x,lander_y,display)
+
 		pygame.display.update()
 
+		thrust = check_keypress(thrust)
 
-	#Displays the ship at the top
-	#Checks for a key press to increase or decrease thrust
+		vel_tmp = velocity-(thrust/(20+gravity)) 	#Change in Velocity
+		fuel = fuel-(thrust/10) 					#Change in fuel
+		height_tmp = height-((velocity+vel_tmp)/10) #Change in heigh
 
-	#The calculation for each move
-	#V1=V-T/20+G - Change in velocity
-	#F=F-T/10 - change in fuel
-	#H1=H-(V+V1)/10 Change in height
+		result = check_result(height,velocity+vel_tmp)
 
-	#If H<0 then landed
-	#IF (V+V1)<8 Check for a safe landing
+		#Sets new values and updates position of lander if no result
+		if (result == 0):
+			velocity = vel_tmp
+			height = height_tmp
+			lander_y = (100-height)*4
 
-	#If H>100 then lost in space
+			#Delay
+			time.sleep(0.25)
+
+	display_result(result, display)
+	pygame.time.wait(1000)
+	pygame.quit()
+
+
+def check_result(height,velocity):
+
+	result = 0
+
+	if (height<0):
+		result = 1
+		if (velocity>8):
+			result = 2
+	elif (height>100):
+		result = 3
+
+	return result
+
+#Checks for a key press to increase or decrease thrust
+def check_keypress(thrust):
+
+	events = pygame.event.get()
+	for event in events:
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_UP:
+				thrust -= 4
+			if event.key == pygame.K_DOWN:
+				thrust += 4	
+
+	return thrust
+
+def display_result(result, display):
+
+	if result == 1:
+		graphics.message_display("You landed safely",display,40,"centre")
+	elif result == 2:
+		graphics.message_display("You landed too fast and crashed",display,40,"centre")
+	else:
+		graphics.message_display("Lost in space",display,40,"centre")
+
 
 #Updates the values of the game statistics
 def display_stats(display,fuel,velocity,height,thrust):

@@ -34,7 +34,7 @@ def create_icon(image):
 
 #Transforms the icon
 def transform_icon(icon):
-	return pygame.transform.scale(icon, (40,40))
+	return pygame.transform.scale(icon, (150,150))
 
 #Displays the icon on the frame
 def display_icon(icon,x,y,gameDisplay):
