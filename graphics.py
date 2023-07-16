@@ -19,6 +19,7 @@ display_width = 800
 display_height = 600
 clock = pygame.time.Clock()	
 white = (255,255,255)
+ground = (110,38,14)
 
 def display_screen():
 	gameDisplay = pygame.display.set_mode((display_width,display_height))
@@ -50,6 +51,15 @@ def display_stat(text,display,size,display_height,display_width):
 def draw_bar(display,start_pos,end_pos):
 
 	pygame.draw.line(display,white,start_pos,end_pos,width=10)
+
+def draw_ground(display):
+
+	pygame.draw.line(display,ground,[0,600],[800,600],width=120)
+
+def draw_stars(display,stars):
+
+	for x in stars:
+		pygame.draw.line(display,white,[x[0],x[1]],[x[0],x[1]],width=3)
 
 #Displays a message on the screen
 def message_display(text,display,size,textPosition):

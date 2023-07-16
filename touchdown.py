@@ -19,7 +19,6 @@ This game can be found on page 30 of Computer Space Games, and it a python3 tran
 
 Lunar Lander Icon: <a href="https://www.flaticon.com/free-icons/lander" title="lander icons">Lander icons created by imaginationlol - Flaticon</a>
 
-
 """
 
 instructions = "Ace space pilot, Captain Flash, is sitting next to you as you take the final\n"
@@ -36,7 +35,6 @@ def main_game():
 	graphics.set_caption("Touchdown")
 	display = graphics.display_screen()
 
-	#Display Star Background for the display
 	#Display rugged ground at the bottom
 
 	#Sets up the main variables
@@ -54,6 +52,7 @@ def main_game():
 	lander_x = graphics.get_width()/2
 	lander_y = 0
 	result = 0
+	stars = display_stars()
 
 	#Main Game Loop
 	while result == 0:
@@ -69,6 +68,9 @@ def main_game():
 			graphics.display_icon(landerImgDwn,lander_x,lander_y,display)
 		else:
 			graphics.display_icon(landerImg,lander_x,lander_y,display)
+
+		graphics.draw_stars(display,stars)
+		graphics.draw_ground(display)
 
 		pygame.display.update()
 
@@ -136,6 +138,17 @@ def display_result(result, display):
 	else:
 		graphics.message_display("Lost in space",display,40,"centre")
 
+def display_stars():
+
+	stars = []
+
+	for x in range(100):
+
+		x_pos = randint(100,800)
+		y_pos = randint(0,800)
+		stars.append([x_pos,y_pos])
+
+	return stars
 
 #Updates the values of the game statistics
 def display_stats(display,fuel,velocity,height,thrust):
