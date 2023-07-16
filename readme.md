@@ -131,6 +131,9 @@ into account the fact that there will be events along the way (randomly mind you
 you need to have enough energy left to make the landing, and to even get out of the craft. It is basically
 making certain calculations (if you know the calculations) to use enough to get there, and to land safely.
 
+**Touchdown**
+This is a graphical game where you have to land a lander on a planet. You simply control the thrust and you have to control the thrust so that the lander either doesn't go up and leave the atmosphere, or land on the ground too hard. You also have limited fuel, so yeah, it can be tricky.
+
 ## Updates
 **29 October 2022**
 Created the initial folder to hold the contents on the game
@@ -170,6 +173,9 @@ Added Space Mine
 
 **13 May 2023**
 Added Space Rescue
+
+**16 July 2023**
+Completed Touch down.
 
 ## TO DO
 Add Difficulty to Beat the Bug Eyes which means more positions, and more bugs (at the same time) and shorter time
